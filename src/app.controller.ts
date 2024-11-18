@@ -13,11 +13,12 @@ export class AppController {
 
   @Post("/result")
   @UseInterceptors(FileInterceptor('file'))
-  handleExcelUpload(@UploadedFile() file: Express.Multer.File): string {
+  handleExcelUpload(@UploadedFile() file: Express.Multer.File): void {
     console.log(file.originalname); // File name
     console.log(file.mimetype); // MIME type
     console.log(file.buffer); // File buffer (binary data)
 
-    return `File ${file.originalname} uploaded successfully!`;
+    this.appService.doWork(file);
+    
   }
 }
