@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as xlsx from 'xlsx';
 import * as fs from 'fs';
 import { execSync } from 'child_process'; // Synchronous execution for simplicity
-
+import OpenAI from 'openai';
 
 
 @Injectable()
@@ -12,7 +12,7 @@ export class AppService {
     return 'Hello World!';
   }
 
-  doWork(file: Express.Multer.File) : void {
+  async doWork(file: Express.Multer.File) : Promise<void> {
     const workbook = xlsx.read(file.buffer, { type: 'buffer' });
 
     const sheetName = workbook.SheetNames[0];
@@ -20,58 +20,101 @@ export class AppService {
 
     const data: any[] = xlsx.utils.sheet_to_json(sheet);
 
-    data.forEach((row, index) =>{
+    let total : number = 0;
+
+    for (const [index, row] of data.entries()) {
+
+      //ToDo: remove the following after excel is fixed
+      
+      if (index >= 1)
+      {
+        break;
+      }
+
       const promptValue = row['prompt'];
-      if (promptValue) {
-        //this.sendToGpt(promptValue);
-      }
+      
+      let code: string = "";
+      let result: string = "";
 
-      const testValue = row['test'];
-      if (testValue) {
+
+        if (promptValue) {
+          code = await this.sendToGpt(promptValue);      
+        }
+  
+        const testValue = row['test'];
+        if (testValue) {
+          result = this.sendToRustCompiler(code + testValue);
+        }
+      
+
+      if (result === "ok")
+      {
+        data[index]["gpt-3.5-turbo"] = 1 
+        total += 1
 
       }
-    })
-    this.sendToGpt("fn has_close_elements(numbers: &[f64], threshold: f64) -> bool {\n\
-    for i in 0..numbers.len() {\n\
-        for j in (i + 1)..numbers.len() {\n\
-            if (numbers[i] - numbers[j]).abs() < threshold {\n\
-                return true;\n\
-            }\n\
-        }\n\
-    }\n\
-    false\n\
-}\n\n\
-#[cfg(test)]\n\
-mod tests {\n\
-    use super::*;\n\n\
-    #[test]\n\
-    fn test_has_close_elements() {\n\
-        assert_eq!(has_close_elements(&vec![1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3), true);\n\
-        assert_eq!(has_close_elements(&vec![1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05), false);\n\
-        assert_eq!(has_close_elements(&vec![1.0, 2.0, 5.9, 4.0, 5.0], 0.95), true);\n\
-        assert_eq!(has_close_elements(&vec![1.0, 2.0, 5.9, 4.0, 5.0], 0.8), false);\n\
-        assert_eq!(has_close_elements(&vec![1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1), true);\n\
-        assert_eq!(has_close_elements(&vec![1.1, 2.2, 3.1, 4.1, 5.1], 1.0), true);\n\
-        assert_eq!(has_close_elements(&vec![1.1, 2.2, 3.1, 4.1, 5.1], 0.5), false);\n\
-    }\n\
-}"
-)
+      else
+      {
+        data[index]["gpt-3.5-turbo"] = 0
+      }
+    }
+
+    // Convert updated data back to a sheet
+    const updatedSheet = xlsx.utils.json_to_sheet(data);
+
+    // Replace the original sheet with the updated one
+    workbook.Sheets[sheetName] = updatedSheet;
+
+    
+    fs.writeFileSync("fil.xlsx", xlsx.write(workbook, { type: "buffer", bookType: "xlsx" }));
+    
+    
+
   }
 
-  sendToGpt(text: string) : string {
-    this.sendToRustCompiler(text)
-    return "";
+  async sendToGpt(text: string) : Promise<string> {
+
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are a programming assistant. Respond only with Rust function implementations, no comments or explanations."
+        },
+        {
+          role: "user",
+          content: text
+        },
+      ],
+    });
+
+    
+    const code = completion.choices[0].message.content
+    
+    // Regular expression to match from "fn" to the last three backticks
+    const regex = /fn[\s\S]*?(?=\`\`\`)/;
+
+    // Extract the match
+    const result = code.match(regex);
+
+    return code;
+    
   }
 
   sendToRustCompiler(text: string) : string {
-    this.runRustCodeOnDocker(text)
-    return ""
+    return this.runRustCodeOnDocker(text)
+    
   
   }
 
   runRustCodeOnDocker(text: string) : string{
     const tempDir = path.join(__dirname, 'temp');
     const rustFilePath = path.join(tempDir, 'main.rs');
+    let outputStatus : string = "";
 
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir);
@@ -88,11 +131,8 @@ mod tests {\n\
       // Regular expression to match only 'ok' or 'FAILED' in the test result
       const match = output.match(/test result: (ok|FAILED)/);
 
-      if (match[1] === "ok") {
-          console.log(1); // Output: 'ok' (or 'FAILED')
-      } else {
-          console.log(0);
-      }
+      return match ? match[1] : undefined;
+
  
     } catch (error) {
       // Step 5: Handle errors (compilation/runtime) and return them
@@ -103,7 +143,7 @@ mod tests {\n\
         fs.unlinkSync(rustFilePath);
       }
 
-    return ""
+    
   }
 }
 
