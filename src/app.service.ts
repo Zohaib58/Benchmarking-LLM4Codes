@@ -12,7 +12,7 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async doWork(file: Express.Multer.File) : Promise<void> {
+  async doWork(file: Express.Multer.File, model: string, newFileName: string) : Promise<void> {
     const workbook = xlsx.read(file.buffer, { type: 'buffer' });
 
     const sheetName = workbook.SheetNames[0];
@@ -38,7 +38,7 @@ export class AppService {
 
 
         if (promptValue) {
-          code = await this.sendToGpt(promptValue);      
+          code = await this.sendToGpt(promptValue, model);      
         }
   
         const testValue = row['test'];
@@ -49,37 +49,43 @@ export class AppService {
 
       if (result === "ok")
       {
-        data[index]["gpt-3.5-turbo"] = 1 
+        data[index][model] = 1 
         total += 1
 
       }
       else
       {
-        data[index]["gpt-3.5-turbo"] = 0
+        data[index][model] = 0
       }
     }
 
     // Convert updated data back to a sheet
-    const updatedSheet = xlsx.utils.json_to_sheet(data);
+    let updatedSheet = xlsx.utils.json_to_sheet(data);
 
+    
+    xlsx.utils.sheet_add_aoa(updatedSheet, [["Total Correct", total]], { origin: "E166" });
+    xlsx.utils.sheet_add_aoa(updatedSheet, [["Percentage Correct", (total / 164) * 100]], { origin: "E167" });
+
+   
     // Replace the original sheet with the updated one
     workbook.Sheets[sheetName] = updatedSheet;
 
+
     
-    fs.writeFileSync("fil.xlsx", xlsx.write(workbook, { type: "buffer", bookType: "xlsx" }));
+    fs.writeFileSync(newFileName+ ".xlsx", xlsx.write(workbook, { type: "buffer", bookType: "xlsx" }));
     
     
 
   }
 
-  async sendToGpt(text: string) : Promise<string> {
+  async sendToGpt(text: string, model: string) : Promise<string> {
 
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: model,
       messages: [
         {
           role: "system",
@@ -95,12 +101,13 @@ export class AppService {
     
     const code = completion.choices[0].message.content
     
+    /*
     // Regular expression to match from "fn" to the last three backticks
     const regex = /fn[\s\S]*?(?=\`\`\`)/;
 
     // Extract the match
     const result = code.match(regex);
-
+    */
     return code;
     
   }
@@ -135,10 +142,10 @@ export class AppService {
 
  
     } catch (error) {
-      // Step 5: Handle errors (compilation/runtime) and return them
+      // Handle errors (compilation/runtime) and return them
       return `Error: ${error.stderr || error.message}`;
     } finally {
-      // Step 6: Clean up temporary files
+      // Clean up temporary files
       if (fs.existsSync(rustFilePath)) {
         fs.unlinkSync(rustFilePath);
       }

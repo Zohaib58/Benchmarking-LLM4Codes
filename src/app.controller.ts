@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { AppService } from './app.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -13,12 +13,11 @@ export class AppController {
 
   @Post("/result")
   @UseInterceptors(FileInterceptor('file'))
-  handleExcelUpload(@UploadedFile() file: Express.Multer.File): void {
-    console.log(file.originalname); // File name
-    console.log(file.mimetype); // MIME type
-    console.log(file.buffer); // File buffer (binary data)
+  handleExcelUpload(@UploadedFile() file: Express.Multer.File, @Body() body: {model: string; newFileName: string}): void {
+    
+    const { model, newFileName } = body; 
 
-    this.appService.doWork(file);
+    this.appService.doWork(file, model, newFileName);
     
   }
 }
