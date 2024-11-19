@@ -4,6 +4,8 @@ import * as xlsx from 'xlsx';
 import * as fs from 'fs';
 import { execSync } from 'child_process'; // Synchronous execution for simplicity
 import OpenAI from 'openai';
+import * as os from 'os';
+
 
 
 @Injectable()
@@ -26,7 +28,7 @@ export class AppService {
 
       //ToDo: remove the following after excel is fixed
       
-      if (index >= 1)
+      if (index >= 51)
       {
         break;
       }
@@ -101,6 +103,8 @@ export class AppService {
     
     const code = completion.choices[0].message.content
     
+    const cleanedCode = code.replace(/```(rust)?/g, "").trim();
+
     /*
     // Regular expression to match from "fn" to the last three backticks
     const regex = /fn[\s\S]*?(?=\`\`\`)/;
@@ -108,7 +112,7 @@ export class AppService {
     // Extract the match
     const result = code.match(regex);
     */
-    return code;
+    return cleanedCode;
     
   }
 
@@ -119,10 +123,14 @@ export class AppService {
   }
 
   runRustCodeOnDocker(text: string) : string{
-    const tempDir = path.join(__dirname, 'temp');
-    const rustFilePath = path.join(tempDir, 'main.rs');
+
+    // Create a unique temporary directory
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "rust-temp-"));
+    const rustFilePath = path.join(tempDir, "main.rs");
+
     let outputStatus : string = "";
 
+    
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir);
     }
@@ -132,14 +140,13 @@ export class AppService {
     const dockerCommandMain = `docker run --rm -v ${tempDir}:/usr/src/myapp -w /usr/src/myapp rust:latest bash -c "rustc main.rs && ./main"`;
 
     const dockerCommand = `docker run --rm -v ${tempDir}:/usr/src/myapp -w /usr/src/myapp rust:latest bash -c "cargo init --bin . && rustc --test main.rs && ./main"`
-    
+    let match : RegExpMatchArray;
     try {
       const output = execSync(dockerCommand, { encoding: 'utf-8' });
       // Regular expression to match only 'ok' or 'FAILED' in the test result
-      const match = output.match(/test result: (ok|FAILED)/);
+      match = output.match(/test result: (ok|FAILED)/);
 
-      return match ? match[1] : undefined;
-
+      
  
     } catch (error) {
       // Handle errors (compilation/runtime) and return them
@@ -149,9 +156,9 @@ export class AppService {
       if (fs.existsSync(rustFilePath)) {
         fs.unlinkSync(rustFilePath);
       }
+    }
+    return match ? match[1] : undefined;
 
-    
-  }
 }
 
 

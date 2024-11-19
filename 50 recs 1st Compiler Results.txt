@@ -1,0 +1,412 @@
+Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0106]: missing lifetime specifier
+ --> main.rs:1:68
+  |
+1 | fn filter_by_substring(strings: Vec<&str>, substring: &str) -> Vec<&str> {
+  |                                 ---------             ----         ^ expected named lifetime parameter   
+  |
+  = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `strings` or `substring`
+help: consider introducing a named lifetime parameter
+  |
+1 | fn filter_by_substring<'a>(strings: Vec<&'a str>, substring: &'a str) -> Vec<&'a str> {
+  |                       ++++               ++                   ++              ++
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0106`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0614]: type `i32` cannot be dereferenced
+ --> main.rs:3:32
+  |
+3 |         *prev_max = Some(x.max(*prev_max.unwrap_or(x)));
+  |                                ^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0614]: type `i32` cannot be dereferenced
+ --> main.rs:4:14
+  |
+4 |         Some(*prev_max.unwrap())
+  |              ^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0614`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0282]: type annotations needed
+  --> main.rs:13:38
+   |
+13 |         assert_eq!(all_prefixes(""), vec![]); //
+   |                                      ^^^^^^ cannot infer type
+   |
+   = note: this error originates in the macro `vec` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0282`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+warning: variable does not need to be mutable
+ --> main.rs:2:9
+  |
+2 |     let mut distinct_chars: std::collections::HashSet<char> = string.chars().map(|c| c.to_ascii_lowercase()).collect();
+  |         ----^^^^^^^^^^^^^^
+  |         |
+  |         help: remove this `mut`
+  |
+  = note: `#[warn(unused_mut)]` on by default
+
+warning: 1 warning emitted
+
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0282]: type annotations needed
+  --> main.rs:13:43
+   |
+13 |             filter_integers(vec![&4, &{}, &[], &23.2, &9, &"adasd"]),
+   |                                           ^^^ cannot infer type for array `[_; 0]`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0282`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0282]: type annotations needed
+  --> main.rs:11:54
+   |
+11 |         assert_eq!(filter_by_prefix(vec![], "john"), vec![]); // []
+   |                                                      ^^^^^^ cannot infer type
+   |
+   = note: this error originates in the macro `vec` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0282`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0433]: failed to resolve: use of undeclared crate or module `rand`
+  --> main.rs:39:31
+   |
+39 |             let ncoeff = 2 * (rand::Rng::gen_range(&mut rng, 1..=4));
+   |                               ^^^^ use of undeclared crate or module `rand`
+
+error[E0433]: failed to resolve: use of undeclared crate or module `rand`
+  --> main.rs:42:33
+   |
+42 |                     let mut c = rand::Rng::gen_range(&mut rng, -10.0..=10.0);
+   |                                 ^^^^ use of undeclared crate or module `rand`
+
+error[E0433]: failed to resolve: use of undeclared crate or module `rand`
+  --> main.rs:37:23
+   |
+37 |         let mut rng = rand::thread_rng();
+   |                       ^^^^ use of undeclared crate or module `rand`
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+warning: unused import: `super::*`
+ --> main.rs:5:9
+  |
+5 |     use super::*;
+  |         ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+error[E0277]: a value of type `i32` cannot be made by summing an iterator over elements of type `usize`      
+ --> main.rs:2:96
+  |
+2 |     (1..n).filter(|&x| x % 11 == 0 || x % 13 == 0).map(|x| x.to_string().matches('7').count()).sum()     
+  |                                                                                                ^^^ value of type `i32` cannot be made by summing a `std::iter::Iterator<Item=usize>`
+  |
+  = help: the trait `Sum<usize>` is not implemented for `i32`
+  = help: the following other types implement trait `Sum<A>`:
+            `i32` implements `Sum<&'a i32>`
+            `i32` implements `Sum`
+note: the method call chain might not have had the expected associated types
+ --> main.rs:2:52
+  |
+2 |     (1..n).filter(|&x| x % 11 == 0 || x % 13 == 0).map(|x| x.to_string().matches('7').count()).sum()     
+  |     ------ --------------------------------------- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `Iterator::Item` changed to `usize` here
+  |     |      |
+  |     |      `Iterator::Item` is `i32` here
+  |     this expression has type `Range<i32>`
+note: required by a bound in `std::iter::Iterator::sum`
+ --> /rustc/f6e511eec7342f59a25f7c0534f1dbea00d01b14/library/core/src/iter/traits/iterator.rs:3572:5
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+ --> main.rs:9:20
+  |
+9 |         assert_eq!(fizz_buzz(50), 0); // 0
+  |                    ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+  --> main.rs:10:20
+   |
+10 |         assert_eq!(fizz_buzz(78), 2); // 2
+   |                    ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+  --> main.rs:11:20
+   |
+11 |         assert_eq!(fizz_buzz(79), 3); // 3
+   |                    ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+  --> main.rs:12:20
+   |
+12 |         assert_eq!(fizz_buzz(100), 3); // 3
+   |                    ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+  --> main.rs:13:20
+   |
+13 |         assert_eq!(fizz_buzz(200), 6); // 6
+   |                    ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+  --> main.rs:14:20
+   |
+14 |         assert_eq!(fizz_buzz(4000), 192); // 192
+   |                    ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+  --> main.rs:15:20
+   |
+15 |         assert_eq!(fizz_buzz(10000), 639); // 639
+   |                    ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `fizz_buzz` in this scope
+  --> main.rs:16:20
+   |
+16 |         assert_eq!(fizz_buzz(100000), 8026); // 8026
+   |                    ^^^^^^^^^ not found in this scope
+
+error: aborting due to 9 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0277, E0425.
+For more information about an error, try `rustc --explain E0277`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0308]: mismatched types
+ --> main.rs:5:20
+  |
+5 |         l[index] = even_indices[i];
+  |         --------   ^^^^^^^^^^^^^^^ expected `i32`, found `usize`
+  |         |
+  |         expected due to the type of this binding
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0308`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0433]: failed to resolve: you might be missing crate `rand`
+  --> main.rs:44:9
+   |
+44 |     use rand::{distributions::Alphanumeric, thread_rng, Rng};
+   |         ^^^^ you might be missing crate `rand`
+   |
+help: consider importing the `rand` crate
+   |
+1  + extern crate rand;
+   |
+
+error[E0432]: unresolved import `rand`
+  --> main.rs:44:9
+   |
+44 |     use rand::{distributions::Alphanumeric, thread_rng, Rng};
+   |         ^^^^ you might be missing crate `rand`
+   |
+help: consider importing the `rand` crate
+   |
+1  + extern crate rand;
+   |
+
+error[E0308]: mismatched types
+ --> main.rs:7:57
+  |
+7 |                 encoded.push_str(&std::str::from_utf8(&[b, c, a]).unwrap());
+  |                                                         ^ expected `u8`, found `&u8`
+  |
+help: consider dereferencing the borrow
+  |
+7 |                 encoded.push_str(&std::str::from_utf8(&[*b, c, a]).unwrap());
+  |                                                         +
+
+error[E0308]: mismatched types
+  --> main.rs:10:57
+   |
+10 |                 encoded.push_str(&std::str::from_utf8(&[b, a]).unwrap());
+   |                                                         ^ expected `u8`, found `&u8`
+   |
+help: consider dereferencing the borrow
+   |
+10 |                 encoded.push_str(&std::str::from_utf8(&[*b, a]).unwrap());
+   |                                                         +
+
+error[E0308]: mismatched types
+  --> main.rs:13:57
+   |
+13 |                 encoded.push_str(&std::str::from_utf8(&[a]).unwrap());
+   |                                                         ^ expected `u8`, found `&u8`
+   |
+help: consider dereferencing the borrow
+   |
+13 |                 encoded.push_str(&std::str::from_utf8(&[*a]).unwrap());
+   |                                                         +
+
+error[E0308]: mismatched types
+  --> main.rs:28:57
+   |
+28 |                 decoded.push_str(&std::str::from_utf8(&[c, a, b]).unwrap());
+   |                                                         ^ expected `u8`, found `&u8`
+   |
+help: consider dereferencing the borrow
+   |
+28 |                 decoded.push_str(&std::str::from_utf8(&[*c, a, b]).unwrap());
+   |                                                         +
+
+error[E0308]: mismatched types
+  --> main.rs:31:57
+   |
+31 |                 decoded.push_str(&std::str::from_utf8(&[a, b]).unwrap());
+   |                                                         ^ expected `u8`, found `&u8`
+   |
+help: consider dereferencing the borrow
+   |
+31 |                 decoded.push_str(&std::str::from_utf8(&[*a, b]).unwrap());
+   |                                                         +
+
+error[E0308]: mismatched types
+  --> main.rs:34:57
+   |
+34 |                 decoded.push_str(&std::str::from_utf8(&[a]).unwrap());
+   |                                                         ^ expected `u8`, found `&u8`
+   |
+help: consider dereferencing the borrow
+   |
+34 |                 decoded.push_str(&std::str::from_utf8(&[*a]).unwrap());
+   |                                                         +
+
+error: aborting due to 8 previous errors
+
+Some errors have detailed explanations: E0308, E0432, E0433.
+For more information about an error, try `rustc --explain E0308`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+warning: unused variable: `i`
+ --> main.rs:8:9
+  |
+8 |     for i in 4..=n {
+  |         ^ help: if this is intentional, prefix it with an underscore: `_i`
+  |
+  = note: `#[warn(unused_variables)]` on by default
+
+warning: 1 warning emitted
+
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error: expected one of `!` or `::`, found `=`
+  --> main.rs:21:10
+   |
+21 | METADATA = {}
+   |          ^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error: empty character literal
+  --> main.rs:23:16
+   |
+23 |         str = ''.join(choice(letters) for i in range(randint(10, 20)))
+   |                ^ empty character literal
+
+error: expected one of `!` or `::`, found `=`
+  --> main.rs:13:10
+   |
+13 | METADATA = {}
+   |          ^ expected one of `!` or `::`
+
+error: aborting due to 2 previous errors
+
