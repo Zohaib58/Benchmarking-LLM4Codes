@@ -1,0 +1,289 @@
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0432]: unresolved import `rand`
+  --> main.rs:16:13
+   |
+16 |         use rand::Rng;
+   |             ^^^^ you might be missing crate `rand`
+   |
+help: consider importing the `rand` crate
+   |
+1  + extern crate rand;
+   |
+
+error[E0433]: failed to resolve: use of undeclared crate or module `rand`
+  --> main.rs:17:23
+   |
+17 |         let mut rng = rand::thread_rng();
+   |                       ^^^^ use of undeclared crate or module `rand`
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0432, E0433.
+For more information about an error, try `rustc --explain E0432`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+warning: variable does not need to be mutable
+ --> main.rs:1:19
+  |
+1 | fn circular_shift(mut x: u32, shift: usize) -> String {
+  |                   ----^
+  |                   |
+  |                   help: remove this `mut`
+  |
+  = note: `#[warn(unused_mut)]` on by default
+
+warning: 1 warning emitted
+
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0277]: the trait bound `usize: Neg` is not satisfied
+  --> main.rs:10:22
+   |
+10 |     let mut result = -1;
+   |                      ^^ the trait `Neg` is not implemented for `usize`
+   |
+   = help: the following other types implement trait `Neg`:
+             &f128
+             &f16
+             &f32
+             &f64
+             &i128
+             &i16
+             &i32
+             &i64
+           and 12 others
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0277`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0106]: missing lifetime specifier
+ --> main.rs:1:57
+  |
+1 | fn total_match(lst1: Vec<&str>, lst2: Vec<&str>) -> Vec<&str> {
+  |                      ---------        ---------         ^ expected named lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `lst1` or `lst2`
+help: consider introducing a named lifetime parameter
+  |
+1 | fn total_match<'a>(lst1: Vec<&'a str>, lst2: Vec<&'a str>) -> Vec<&'a str> {
+  |               ++++            ++                  ++               ++
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0106`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0599]: no method named `cbrt` found for type `i32` in the current scope
+ --> main.rs:2:7
+  |
+2 |     a.cbrt().round().pow(3) == a as f64
+  |       ^^^^ method not found in `i32`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0599`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+warning: function `is_prime` is never used
+ --> main.rs:1:4
+  |
+1 | fn is_prime(num: usize) -> bool {
+  |    ^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0412]: cannot find type `HashSet` in this scope
+ --> main.rs:7:42
+  |
+7 |         if s[i..i + 3].chars().collect::<HashSet<char>>().len() != 3 {
+  |                                          ^^^^^^^ not found in this scope
+  |
+help: consider importing this struct
+  |
+1 + use std::collections::HashSet;
+  |
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0412`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+warning: unused variable: `col`
+  --> main.rs:12:32
+   |
+12 |     result.sort_by_key(|&(row, col)| row);
+   |                                ^^^ help: if this is intentional, prefix it with an underscore: `_col`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `row`
+  --> main.rs:13:27
+   |
+13 |     result.sort_by_key(|&(row, col)| col);
+   |                           ^^^ help: if this is intentional, prefix it with an underscore: `_row`
+
+warning: 2 warnings emitted
+
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0308]: mismatched types
+  --> main.rs:21:46
+   |
+21 |         .map_or(0, |max_prime| sum_of_digits(max_prime))
+   |                                ------------- ^^^^^^^^^ expected `u64`, found `&u64`
+   |                                |
+   |                                arguments to this function are incorrect
+   |
+note: function defined here
+  --> main.rs:13:4
+   |
+13 | fn sum_of_digits(num: u64) -> u64 {
+   |    ^^^^^^^^^^^^^ --------
+help: consider dereferencing the borrow
+   |
+21 |         .map_or(0, |max_prime| sum_of_digits(*max_prime))
+   |                                              +
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0308`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error[E0282]: type annotations needed
+  --> main.rs:25:38
+   |
+25 |         assert_eq!(words_string(""), vec![]);
+   |                                      ^^^^^^ cannot infer type
+   |
+   = note: this error originates in the macro `vec` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0282`.
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error: expected one of `!` or `::`, found `check`
+ --> main.rs:5:6
+  |
+5 | }def check(candidate):
+  |  --- ^^^^^ expected one of `!` or `::`
+  |  |
+  |  help: write `fn` instead of `def` to declare a function
+
+error: aborting due to 1 previous error
+
+    Creating binary (application) package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+error: character literal may only contain one codepoint
+  --> main.rs:30:40
+   |
+30 |     assert candidate([1, -1 , 55]) == ['One'], "Error"
+   |                                        ^^^^^
+   |
+help: if you meant to write a string literal, use double quotes
+   |
+30 |     assert candidate([1, -1 , 55]) == ["One"], "Error"
+   |                                        ~   ~
+
+error: expected one of `!` or `::`, found `check`
+  --> main.rs:24:6
+   |
+24 | }def check(candidate):
+   |  --- ^^^^^ expected one of `!` or `::`
+   |  |
+   |  help: write `fn` instead of `def` to declare a function
+
+error: aborting due to 2 previous errors

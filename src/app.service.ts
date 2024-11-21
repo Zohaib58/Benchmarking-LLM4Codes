@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import { execSync } from 'child_process'; // Synchronous execution for simplicity
 import OpenAI from 'openai';
 import * as os from 'os';
+import { skip } from 'node:test';
 
 
 
@@ -28,9 +29,9 @@ export class AppService {
 
       //ToDo: remove the following after excel is fixed
       
-      if (index >= 51)
+      if (index < 51 || index > 105)
       {
-        break;
+        continue;
       }
 
       const promptValue = row['prompt'];
