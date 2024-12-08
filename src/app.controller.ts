@@ -13,11 +13,11 @@ export class AppController {
 
   @Post("/result")
   @UseInterceptors(FileInterceptor('file'))
-  handleExcelUpload(@UploadedFile() file: Express.Multer.File, @Body() body: {model: string; newFileName: string}): void {
+  handleExcelUpload(@UploadedFile() file: Express.Multer.File, @Body() body: {model: string; newFileName: string; newSheetName: string}): void {
     
-    const { model, newFileName } = body; 
+    const { model, newFileName, newSheetName } = body; 
 
-    this.appService.doWork(file, model, newFileName);
+    this.appService.doWork(file, model, newFileName, newSheetName);
     
   }
 }
